@@ -443,8 +443,13 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
-          <div className="text-white/30 text-sm">
-            © {new Date().getFullYear()} Alwaalah Safety & Security. All rights reserved.
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <div className="text-white/30 text-sm">
+              © {new Date().getFullYear()} Alwaalah Safety & Security. All rights reserved.
+            </div>
+            <div className="text-white/20 text-xs">
+              Website designed and developed by <a href="https://www.mutqun.com/" target="_blank" rel="noopener noreferrer" className="hover:text-safety-red transition-colors font-medium">MUTQUN Software</a>
+            </div>
           </div>
           <div className="flex gap-8 text-white/30 text-sm">
             <a href="#" className="hover:text-white">Privacy Policy</a>
