@@ -139,15 +139,27 @@ const Navbar = () => {
                   <ChevronRight size={20} className="text-white/20 group-hover:text-safety-red group-hover:translate-x-1 transition-all" />
                 </motion.a>
               ))}
-              <motion.a 
-                variants={itemVariants}
-                href={`tel:${contactInfo.phone}`}
-                className="flex items-center justify-center gap-3 bg-white text-black py-5 rounded-2xl font-bold text-lg mt-4 shadow-xl"
-                whileTap={{ scale: 0.98 }}
-              >
-                <Phone size={20} />
-                {contactInfo.phone}
-              </motion.a>
+              
+              <div className="pt-4 flex flex-col gap-4">
+                <Link 
+                  to="/request-service"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-3 bg-safety-red text-white py-5 rounded-2xl font-bold text-lg shadow-xl"
+                >
+                  Request Service
+                  <ArrowRight size={20} />
+                </Link>
+                
+                <motion.a 
+                  variants={itemVariants}
+                  href={`tel:${contactInfo.phone}`}
+                  className="flex items-center justify-center gap-3 bg-white text-black py-5 rounded-2xl font-bold text-lg shadow-xl"
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Phone size={20} />
+                  {contactInfo.phone}
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         )}
@@ -158,7 +170,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-screen flex items-center pt-40 md:pt-48 pb-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-safety-red/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-security-blue/20 blur-[120px] rounded-full" />
@@ -181,10 +193,11 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4">
-            <Link to="/request-service">
-              <button className="px-8 py-4 bg-white text-black rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition-transform">
-                Request Service <ArrowRight size={20} />
-              </button>
+            <Link 
+              to="/request-service"
+              className="px-8 py-4 bg-white text-black rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition-transform"
+            >
+              Request Service <ArrowRight size={20} />
             </Link>
             <button className="px-8 py-4 liquid-glass rounded-2xl font-bold hover:bg-white/5 transition-colors">
               Our Services

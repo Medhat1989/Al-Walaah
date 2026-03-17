@@ -37,7 +37,7 @@ const ServiceRequest = () => {
   }
 
   return (
-    <div className="min-h-screen bg-black pt-32 pb-20 px-6 relative overflow-hidden">
+    <div className="min-h-screen bg-black pt-40 md:pt-48 pb-20 px-6 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-safety-red/10 blur-[120px] rounded-full" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-security-blue/10 blur-[120px] rounded-full" />
