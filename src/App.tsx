@@ -25,7 +25,7 @@ import {
   Activity
 } from 'lucide-react';
 import { services, contactInfo } from './constants';
-import Products from './pages/Products';
+import ServiceRequest from './pages/ServiceRequest';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -181,9 +181,9 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4">
-            <Link to="/products">
+            <Link to="/request-service">
               <button className="px-8 py-4 bg-white text-black rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition-transform">
-                Check Products <ArrowRight size={20} />
+                Request Service <ArrowRight size={20} />
               </button>
             </Link>
             <button className="px-8 py-4 liquid-glass rounded-2xl font-bold hover:bg-white/5 transition-colors">
@@ -457,12 +457,144 @@ const Home = () => {
   );
 };
 
-export default function App() {
+interface EntranceProps {
+  onEnter: () => void;
+}
+
+const EntranceScreen: React.FC<EntranceProps> = ({ onEnter }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onEnter();
+    }, 4000); // Auto-navigate after 4 seconds
+    return () => clearTimeout(timer);
+  }, [onEnter]);
+
   return (
-    <div className="font-sans antialiased">
+    <motion.div 
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -100 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center gap-12"
+    >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-safety-red/10 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-security-blue/10 blur-[120px]" />
+        
+        {/* Splash Mist Effect */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute left-1/2 top-1/2 w-64 h-64 rounded-full bg-white/5 blur-[60px]"
+            initial={{ 
+              x: "-50%", 
+              y: "-50%", 
+              scale: 0.5, 
+              opacity: 0 
+            }}
+            animate={{ 
+              scale: [1, 2, 1.5],
+              opacity: [0, 0.2, 0],
+              x: ["-50%", `${-50 + (Math.random() * 40 - 20)}%`],
+              y: ["-50%", `${-50 + (Math.random() * 40 - 20)}%`],
+            }}
+            transition={{ 
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 flex flex-col items-center gap-12">
+        <motion.div
+          animate={{ 
+            y: [0, -15, 0],
+          }}
+          transition={{ 
+            duration: 5, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="cursor-pointer relative group"
+          onClick={onEnter}
+        >
+          {/* Light line around effect */}
+          <div className="absolute -inset-8 rounded-full border border-white/5 blur-sm" />
+          <motion.div 
+            className="absolute -inset-8 rounded-full border border-white/20"
+            animate={{ 
+              opacity: [0.1, 0.4, 0.1],
+              scale: [1, 1.05, 1],
+              rotate: [0, 180, 360]
+            }}
+            transition={{ 
+              opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+              scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+            }}
+          />
+          
+          <img 
+            src="https://i.ibb.co/yBXnHVHC/l1j-removebg-preview.png" 
+            alt="Logo Part 1" 
+            className="h-40 md:h-64 object-contain relative z-10 filter drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
+
+        <motion.div
+          animate={{ 
+            y: [0, -10, 0],
+          }}
+          transition={{ 
+            duration: 4, 
+            delay: 0.5,
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          whileHover={{ scale: 1.05, filter: "brightness(1.2)" }}
+          whileTap={{ scale: 0.95 }}
+          className="cursor-pointer transition-all duration-300"
+          onClick={onEnter}
+        >
+          <img 
+            src="https://i.ibb.co/BH3ddRHX/l2.png" 
+            alt="Logo Part 2" 
+            className="h-16 md:h-24 object-contain"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
+
+        {/* Subtle loading indicator instead of button */}
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: "100px" }}
+          transition={{ duration: 4, ease: "linear" }}
+          className="h-[1px] bg-white/20 mt-4"
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+export default function App() {
+  const [hasEntered, setHasEntered] = useState(false);
+
+  return (
+    <div className="font-sans antialiased bg-black min-h-screen">
+      <AnimatePresence mode="wait">
+        {!hasEntered && (
+          <EntranceScreen key="entrance" onEnter={() => setHasEntered(true)} />
+        )}
+      </AnimatePresence>
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/request-service" element={<ServiceRequest />} />
       </Routes>
     </div>
   );
