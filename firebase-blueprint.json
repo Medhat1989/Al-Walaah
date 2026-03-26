@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "Quotation": {
+      "title": "Quotation",
+      "description": "A formal price offer for services and products.",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string", "format": "date", "description": "Date of the quotation" },
+        "engineerName": { "type": "string", "description": "Name of the engineer who prepared the quotation" },
+        "clientName": { "type": "string", "description": "Name of the client" },
+        "clientPhone": { "type": "string", "description": "Phone number of the client" },
+        "projectName": { "type": "string", "description": "Name of the project" },
+        "quotationNumber": { "type": "string", "description": "Unique quotation number" },
+        "referenceNumber": { "type": "string", "description": "Internal reference number" },
+        "projectLocation": { "type": "string", "description": "Location of the project" },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": { "type": "string" },
+              "quantity": { "type": "number" },
+              "unitPrice": { "type": "number" },
+              "total": { "type": "number" }
+            }
+          }
+        },
+        "subtotal": { "type": "number" },
+        "vatAmount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["draft", "sent", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["date", "clientName", "quotationNumber", "items", "totalAmount"]
+    },
+    "User": {
+      "title": "User",
+      "description": "Application user with specific roles.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["admin", "employee"] },
+        "name": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/quotations": {
+      "schema": "Quotation",
+      "description": "Collection of all quotations"
+    },
+    "/users": {
+      "schema": "User",
+      "description": "User profiles and roles"
+    }
+  }
+}

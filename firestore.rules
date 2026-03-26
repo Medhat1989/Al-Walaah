@@ -1,0 +1,81 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: quotations
+    // Fields:
+    //   - date: string (required)
+    //   - engineerName: string
+    //   - clientName: string (required)
+    //   - clientPhone: string
+    //   - projectName: string
+    //   - quotationNumber: string (required)
+    //   - referenceNumber: string
+    //   - projectLocation: string
+    //   - items: list (required)
+    //   - subtotal: number
+    //   - vatAmount: number
+    //   - totalAmount: number (required)
+    //   - status: string (draft, sent, approved, rejected)
+    //   - createdAt: timestamp
+    //
+    // Collection: users
+    // Fields:
+    //   - email: string (required)
+    //   - role: string (admin, employee)
+    //   - name: string
+    //
+    // ===============================================================
+
+    // Helper Functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+        (request.auth.token.email == "medhat.safari@gmail.com" && request.auth.token.email_verified == true)
+      );
+    }
+
+    function isEmployee() {
+      let role = get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+      return isAuthenticated() && (role == 'employee' || role == 'admin' || isAdmin());
+    }
+
+    function isValidQuotation(data) {
+      return data.keys().hasAll(['date', 'clientName', 'quotationNumber', 'items', 'totalAmount']) &&
+             data.clientName is string && data.clientName.size() > 0 && data.clientName.size() < 200 &&
+             data.quotationNumber is string && data.quotationNumber.size() > 0 &&
+             data.items is list && data.items.size() > 0 && data.items.size() < 100 &&
+             data.totalAmount is number;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['email', 'role']) &&
+             data.email is string &&
+             data.role in ['admin', 'employee'];
+    }
+
+    // Rules
+    match /users/{userId} {
+      allow read: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+      allow create: if isAuthenticated() && (
+        (request.auth.uid == userId && request.resource.data.role == 'employee') || 
+        isAdmin()
+      ) && isValidUser(request.resource.data);
+      allow update: if isAdmin() && isValidUser(request.resource.data);
+    }
+
+    match /quotations/{quotationId} {
+      allow read: if isEmployee();
+      allow create: if isEmployee() && isValidQuotation(request.resource.data);
+      allow update: if isEmployee() && isValidQuotation(request.resource.data);
+      allow delete: if isAdmin();
+    }
+  }
+}

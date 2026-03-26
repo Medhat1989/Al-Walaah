@@ -24,15 +24,26 @@ import {
   ShieldCheck,
   Zap,
   Activity,
-  Globe
+  Globe,
+  Lock
 } from 'lucide-react';
-import { services, contactInfo } from './constants';
+import { auth, signInWithGoogle } from './firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import AdminDashboard from './pages/AdminDashboard';
 import ServiceRequest from './pages/ServiceRequest';
+import Login from './pages/Login';
+import { services, contactInfo } from './constants';
 
 const Navbar = () => {
   const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => setUser(u));
+    return () => unsubscribe();
+  }, []);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'ar' : 'en';
@@ -130,6 +141,29 @@ const Navbar = () => {
               <Phone size={16} />
               {t('nav.callUs')}
             </motion.a>
+
+            {user ? (
+              <Link to="/admin">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-safety-red text-white p-2.5 rounded-xl shadow-lg shadow-safety-red/20"
+                >
+                  <Lock size={18} />
+                </motion.button>
+              </Link>
+            ) : (
+              <Link to="/login">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="text-white/40 hover:text-white p-2.5 transition-colors"
+                  title="Staff Login"
+                >
+                  <Lock size={18} />
+                </motion.button>
+              </Link>
+            )}
             <motion.button 
               whileTap={{ scale: 0.9 }}
               className="md:hidden p-2 text-white bg-white/5 rounded-xl border border-white/10"
@@ -627,11 +661,23 @@ const EntranceScreen: React.FC<EntranceProps> = ({ onEnter }) => {
 export default function App() {
   const { i18n } = useTranslation();
   const [hasEntered, setHasEntered] = useState(false);
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = i18n.language;
   }, [i18n.language]);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
+      setUser(u);
+      setLoading(false);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) return null;
 
   return (
     <div className="font-sans antialiased bg-black min-h-screen">
@@ -644,6 +690,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/request-service" element={<ServiceRequest />} />
+        <Route path="/login" element={<Login />} />
+        <Route 
+          path="/admin" 
+          element={user ? <AdminDashboard /> : <Login />} 
+        />
       </Routes>
     </div>
   );
