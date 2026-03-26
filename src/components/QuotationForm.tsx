@@ -117,7 +117,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="date" 
               value={formData.date}
               onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
             />
           </div>
           <div className="space-y-2">
@@ -126,7 +126,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.engineerName}
               onChange={(e) => setFormData({ ...formData, engineerName: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
               placeholder={t('quotation.placeholders.engineer')}
             />
           </div>
@@ -136,7 +136,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.quotationNumber}
               onChange={(e) => setFormData({ ...formData, quotationNumber: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
             />
           </div>
           <div className="space-y-2">
@@ -145,7 +145,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.referenceNumber}
               onChange={(e) => setFormData({ ...formData, referenceNumber: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
               placeholder="00101"
             />
           </div>
@@ -158,7 +158,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.clientName}
               onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
               placeholder={t('quotation.placeholders.client')}
             />
           </div>
@@ -168,7 +168,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.clientPhone}
               onChange={(e) => setFormData({ ...formData, clientPhone: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
               placeholder={t('quotation.placeholders.phone')}
             />
           </div>
@@ -181,7 +181,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.projectName}
               onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
               placeholder={t('quotation.placeholders.project')}
             />
           </div>
@@ -191,7 +191,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
               type="text" 
               value={formData.projectLocation}
               onChange={(e) => setFormData({ ...formData, projectLocation: e.target.value })}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-safety-red text-black"
               placeholder={t('quotation.placeholders.location')}
             />
           </div>
@@ -218,7 +218,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
                     type="text" 
                     value={item.description}
                     onChange={(e) => handleItemChange(index, 'description', e.target.value)}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:border-safety-red"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:border-safety-red text-black"
                     placeholder={t('quotation.placeholders.itemDescription')}
                   />
                 </div>
@@ -228,7 +228,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
                     type="number" 
                     value={item.quantity}
                     onChange={(e) => handleItemChange(index, 'quantity', parseFloat(e.target.value))}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:border-safety-red"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:border-safety-red text-black"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2">
@@ -237,7 +237,7 @@ const QuotationForm: React.FC<QuotationFormProps> = ({ initialData, onSave, onCa
                     type="number" 
                     value={item.unitPrice}
                     onChange={(e) => handleItemChange(index, 'unitPrice', parseFloat(e.target.value))}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:border-safety-red"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-2 focus:outline-none focus:border-safety-red text-black"
                   />
                 </div>
                 <div className="md:col-span-2 space-y-2">

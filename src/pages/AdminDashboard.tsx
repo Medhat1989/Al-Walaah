@@ -125,7 +125,7 @@ const AdminDashboard = () => {
                 placeholder={t('quotation.searchPlaceholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full bg-gray-50 rounded-2xl ${isArabic ? 'pr-12 pl-6' : 'pl-12 pr-6'} py-4 focus:outline-none focus:ring-2 focus:ring-safety-red/20 transition-all`}
+                className={`w-full bg-gray-50 rounded-2xl ${isArabic ? 'pr-12 pl-6' : 'pl-12 pr-6'} py-4 focus:outline-none focus:ring-2 focus:ring-safety-red/20 transition-all text-black`}
               />
             </div>
           </div>
