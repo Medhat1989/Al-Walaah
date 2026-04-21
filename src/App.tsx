@@ -112,7 +112,7 @@ const Navbar = () => {
               <motion.a 
                 key={item.name} 
                 href={item.href} 
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors relative group"
+                className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors relative group"
                 whileHover={{ y: -2 }}
               >
                 {item.name}
@@ -126,7 +126,7 @@ const Navbar = () => {
               onClick={toggleLanguage}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 text-xs font-bold bg-white/5 border border-white/10 px-3 py-2 rounded-xl hover:bg-white/10 transition-all"
+              className="flex items-center gap-2 text-xs font-bold bg-black/5 border border-black/5 px-3 py-2 rounded-xl hover:bg-black/10 transition-all text-slate-700"
             >
               <Globe size={14} />
               {i18n.language === 'en' ? 'العربية' : 'English'}
@@ -157,7 +157,7 @@ const Navbar = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="text-white/40 hover:text-white p-2.5 transition-colors"
+                  className="text-slate-400 hover:text-slate-900 p-2.5 transition-colors"
                   title="Staff Login"
                 >
                   <Lock size={18} />
@@ -166,7 +166,7 @@ const Navbar = () => {
             )}
             <motion.button 
               whileTap={{ scale: 0.9 }}
-              className="md:hidden p-2 text-white bg-white/5 rounded-xl border border-white/10"
+              className="md:hidden p-2 text-slate-700 bg-black/5 rounded-xl border border-black/5"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X /> : <Menu />}
@@ -247,7 +247,7 @@ const Hero = () => {
             {t('hero.title3')}
           </h1>
           
-          <p className="text-lg text-white/50 max-w-lg mb-10 leading-relaxed">
+          <p className="text-lg text-slate-500 max-w-lg mb-10 leading-relaxed">
             {t('hero.description')}
           </p>
           
@@ -258,23 +258,23 @@ const Hero = () => {
             >
               {t('hero.requestService')} <ArrowRight size={20} className={i18n.language === 'ar' ? 'rotate-180' : ''} />
             </Link>
-            <button className="px-8 py-4 liquid-glass rounded-2xl font-bold hover:bg-white/5 transition-colors">
+            <button className="px-8 py-4 liquid-glass rounded-2xl font-bold hover:bg-black/5 transition-colors">
               {t('hero.ourServices')}
             </button>
           </div>
 
-          <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/10 pt-8">
+          <div className="mt-16 grid grid-cols-3 gap-8 border-t border-black/5 pt-8">
             <div>
-              <div className="text-3xl font-bold font-display">15+</div>
-              <div className="text-xs text-white/40 uppercase tracking-wider mt-1">{t('hero.experience')}</div>
+              <div className="text-3xl font-bold font-display text-slate-900 border-none">15+</div>
+              <div className="text-xs text-slate-400 uppercase tracking-wider mt-1">{t('hero.experience')}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold font-display">2.5k</div>
-              <div className="text-xs text-white/40 uppercase tracking-wider mt-1">{t('hero.projects')}</div>
+              <div className="text-3xl font-bold font-display text-slate-900 border-none">2.5k</div>
+              <div className="text-xs text-slate-400 uppercase tracking-wider mt-1">{t('hero.projects')}</div>
             </div>
             <div>
-              <div className="text-3xl font-bold font-display">100%</div>
-              <div className="text-xs text-white/40 uppercase tracking-wider mt-1">{t('hero.compliance')}</div>
+              <div className="text-3xl font-bold font-display text-slate-900 border-none">100%</div>
+              <div className="text-xs text-slate-400 uppercase tracking-wider mt-1">{t('hero.compliance')}</div>
             </div>
           </div>
         </motion.div>
@@ -293,7 +293,7 @@ const Hero = () => {
               referrerPolicy="no-referrer"
             />
             <div className={`absolute top-8 ${i18n.language === 'ar' ? 'left-8 text-left' : 'right-8 text-right'}`}>
-              <div className="font-display text-xl font-bold tracking-tight text-white drop-shadow-2xl">
+              <div className="font-display text-xl font-bold tracking-tight text-slate-900 drop-shadow-sm">
                 {t('hero.highTech')} <br />
                 <span className="text-safety-red">{t('hero.fireSystem')}</span>
               </div>
@@ -307,7 +307,7 @@ const Hero = () => {
             className={`absolute -top-10 ${i18n.language === 'ar' ? '-left-10' : '-right-10'} z-20 liquid-glass p-6 rounded-3xl hidden md:block`}
           >
             <Shield size={32} className="text-security-blue mb-2" />
-            <div className="text-xs font-bold uppercase tracking-widest text-white/40">{t('hero.secure')}</div>
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('hero.secure')}</div>
           </motion.div>
 
           <motion.div 
@@ -316,7 +316,7 @@ const Hero = () => {
             className={`absolute -bottom-6 ${i18n.language === 'ar' ? '-right-10' : '-left-10'} z-20 liquid-glass p-6 rounded-3xl hidden md:block`}
           >
             <Zap size={32} className="text-safety-orange mb-2" />
-            <div className="text-xs font-bold uppercase tracking-widest text-white/40">{t('hero.fastResponse')}</div>
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('hero.fastResponse')}</div>
           </motion.div>
         </motion.div>
       </div>
@@ -339,17 +339,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => {
       transition={{ delay: index * 0.1 }}
       className="group relative"
     >
-      <div className="liquid-glass p-8 rounded-[32px] h-full transition-all duration-500 hover:-translate-y-2 hover:bg-white/[0.08]">
+      <div className="liquid-glass p-8 rounded-[32px] h-full transition-all duration-500 hover:-translate-y-2 hover:bg-black/[0.02]">
         <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-4 mb-6 text-white shadow-lg`}>
           <service.icon size={32} />
         </div>
         
-        <h3 className="text-2xl font-display font-bold mb-4">{t(`services.items.${service.id}.title`)}</h3>
-        <p className="text-white/50 leading-relaxed mb-8">
+        <h3 className="text-2xl font-display font-bold mb-4 text-slate-900">{t(`services.items.${service.id}.title`)}</h3>
+        <p className="text-slate-500 leading-relaxed mb-8">
           {t(`services.items.${service.id}.description`)}
         </p>
         
-        <button className="flex items-center gap-2 text-sm font-bold text-white/40 group-hover:text-white transition-colors">
+        <button className="flex items-center gap-2 text-sm font-bold text-slate-400 group-hover:text-slate-900 transition-colors">
           {t('services.learnMore')} <ChevronRight size={16} className={i18n.language === 'ar' ? 'rotate-180' : ''} />
         </button>
       </div>
@@ -370,7 +370,7 @@ const Services = () => {
               {t('services.title').split(' ').slice(1).join(' ')}
             </h3>
           </div>
-          <p className="text-white/40 max-w-sm mb-2">
+          <p className="text-slate-400 max-w-sm mb-2">
             {t('services.description')}
           </p>
         </div>
@@ -391,71 +391,71 @@ const Contact = () => {
     <section id="contact" className="py-32 relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="liquid-glass rounded-[32px] md:rounded-[48px] overflow-hidden grid lg:grid-cols-2">
-          <div className="p-8 md:p-12 lg:p-20 bg-gradient-to-br from-white/5 to-transparent">
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-8">{t('contact.title')}</h2>
-            <p className="text-white/50 mb-12 text-lg">
+          <div className="p-8 md:p-12 lg:p-20 bg-gradient-to-br from-black/5 to-transparent">
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-8 text-slate-900">{t('contact.title')}</h2>
+            <p className="text-slate-500 mb-12 text-lg">
               {t('contact.description')}
             </p>
 
             <div className="space-y-8">
               <div className="flex items-center gap-6">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 flex items-center justify-center text-safety-red">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/5 flex items-center justify-center text-safety-red">
                   <Phone size={24} />
                 </div>
                 <div>
-                  <div className="text-[10px] md:text-sm text-white/40 uppercase tracking-widest font-bold">{t('contact.callUs')}</div>
-                  <div className="text-lg md:text-xl font-bold" dir="ltr">{contactInfo.phone}</div>
+                  <div className="text-[10px] md:text-sm text-slate-400 uppercase tracking-widest font-bold">{t('contact.callUs')}</div>
+                  <div className="text-lg md:text-xl font-bold text-slate-900" dir="ltr">{contactInfo.phone}</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-6">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 flex items-center justify-center text-security-blue">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/5 flex items-center justify-center text-security-blue">
                   <Mail size={24} />
                 </div>
                 <div>
-                  <div className="text-[10px] md:text-sm text-white/40 uppercase tracking-widest font-bold">{t('contact.emailUs')}</div>
-                  <div className="text-lg md:text-xl font-bold">{contactInfo.email}</div>
+                  <div className="text-[10px] md:text-sm text-slate-400 uppercase tracking-widest font-bold">{t('contact.emailUs')}</div>
+                  <div className="text-lg md:text-xl font-bold text-slate-900">{contactInfo.email}</div>
                 </div>
               </div>
 
               <div className="flex items-center gap-6">
-                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 flex items-center justify-center text-safety-orange">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-black/5 flex items-center justify-center text-safety-orange">
                   <MapPin size={24} />
                 </div>
                 <div>
-                  <div className="text-[10px] md:text-sm text-white/40 uppercase tracking-widest font-bold">{t('contact.visitUs')}</div>
-                  <div className="text-lg md:text-xl font-bold">{contactInfo.address}</div>
+                  <div className="text-[10px] md:text-sm text-slate-400 uppercase tracking-widest font-bold">{t('contact.visitUs')}</div>
+                  <div className="text-lg md:text-xl font-bold text-slate-900">{t('contact.address')}</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={`p-8 md:p-12 lg:p-20 border-t lg:border-t-0 ${i18n.language === 'ar' ? 'lg:border-r' : 'lg:border-l'} border-white/10`}>
+          <div className={`p-8 md:p-12 lg:p-20 border-t lg:border-t-0 ${i18n.language === 'ar' ? 'lg:border-r' : 'lg:border-l'} border-black/5`}>
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40">{t('contact.form.fullName')}</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors" placeholder={t('contact.form.placeholders.name')} />
+                  <label className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('contact.form.fullName')}</label>
+                  <input type="text" className="w-full bg-black/5 border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors text-slate-900 placeholder:text-slate-400" placeholder={t('contact.form.placeholders.name')} />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-white/40">{t('contact.form.email')}</label>
-                  <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors" placeholder={t('contact.form.placeholders.email')} />
+                  <label className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('contact.form.email')}</label>
+                  <input type="email" className="w-full bg-black/5 border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors text-slate-900 placeholder:text-slate-400" placeholder={t('contact.form.placeholders.email')} />
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-white/40">{t('contact.form.service')}</label>
-                <select className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors appearance-none">
-                  <option className="bg-black">{t('contact.form.options.permits')}</option>
-                  <option className="bg-black">{t('contact.form.options.alarm')}</option>
-                  <option className="bg-black">{t('contact.form.options.surveillance')}</option>
-                  <option className="bg-black">{t('contact.form.options.other')}</option>
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('contact.form.service')}</label>
+                <select className="w-full bg-black/5 border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors appearance-none text-slate-900">
+                  <option className="bg-white">{t('contact.form.options.permits')}</option>
+                  <option className="bg-white">{t('contact.form.options.alarm')}</option>
+                  <option className="bg-white">{t('contact.form.options.surveillance')}</option>
+                  <option className="bg-white">{t('contact.form.options.other')}</option>
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-white/40">{t('contact.form.message')}</label>
-                <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors" placeholder={t('contact.form.placeholders.message')}></textarea>
+                <label className="text-xs font-bold uppercase tracking-widest text-slate-400">{t('contact.form.message')}</label>
+                <textarea rows={4} className="w-full bg-black/5 border border-black/5 rounded-xl px-4 py-4 focus:outline-none focus:border-safety-red transition-colors text-slate-900 placeholder:text-slate-400" placeholder={t('contact.form.placeholders.message')}></textarea>
               </div>
-              <button className="w-full bg-white text-black py-5 rounded-2xl font-bold text-lg hover:bg-white/90 transition-all active:scale-[0.98]">
+              <button className="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition-all active:scale-[0.98]">
                 {t('contact.form.send')}
               </button>
             </form>
@@ -469,50 +469,50 @@ const Contact = () => {
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="py-20 border-t border-white/10">
+    <footer className="py-20 border-t border-black/5 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-12 mb-20">
           <div className="col-span-2">
             <div className="flex items-center mb-8">
               <img src={contactInfo.logo} alt="Alwaalah Logo" className="h-20 md:h-24 w-auto" referrerPolicy="no-referrer" />
             </div>
-            <p className="text-white/40 max-w-md leading-relaxed">
+            <p className="text-slate-500 max-w-md leading-relaxed">
               {t('footer.description')}
             </p>
           </div>
           
           <div>
-            <h4 className="font-bold mb-8 uppercase tracking-widest text-xs text-white/60">{t('footer.quickLinks')}</h4>
-            <ul className="space-y-4 text-white/40">
-              <li><a href="#" className="hover:text-white transition-colors">{t('nav.about')}</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">{t('nav.services')}</a></li>
-              <li><a href="#contact" className="hover:text-white transition-colors">{t('nav.contact')}</a></li>
+            <h4 className="font-bold mb-8 uppercase tracking-widest text-xs text-slate-900">{t('footer.quickLinks')}</h4>
+            <ul className="space-y-4 text-slate-500">
+              <li><a href="#" className="hover:text-safety-red transition-colors">{t('nav.about')}</a></li>
+              <li><a href="#services" className="hover:text-safety-red transition-colors">{t('nav.services')}</a></li>
+              <li><a href="#contact" className="hover:text-safety-red transition-colors">{t('nav.contact')}</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold mb-8 uppercase tracking-widest text-xs text-white/60">{t('footer.services')}</h4>
-            <ul className="space-y-4 text-white/40">
-              <li><a href="#" className="hover:text-white transition-colors">{t('services.items.permits.title')}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t('services.items.extinguishing.title')}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t('services.items.surveillance.title')}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t('services.items.integration.title')}</a></li>
+            <h4 className="font-bold mb-8 uppercase tracking-widest text-xs text-slate-900">{t('footer.services')}</h4>
+            <ul className="space-y-4 text-slate-500">
+              <li><a href="#" className="hover:text-safety-red transition-colors">{t('services.items.permits.title')}</a></li>
+              <li><a href="#" className="hover:text-safety-red transition-colors">{t('services.items.extinguishing.title')}</a></li>
+              <li><a href="#" className="hover:text-safety-red transition-colors">{t('services.items.surveillance.title')}</a></li>
+              <li><a href="#" className="hover:text-safety-red transition-colors">{t('services.items.integration.title')}</a></li>
             </ul>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-black/5 gap-4">
           <div className="flex flex-col items-center md:items-start gap-1">
-            <div className="text-white/30 text-sm">
+            <div className="text-slate-400 text-sm">
               © {new Date().getFullYear()} Alwaalah Safety & Security. {t('footer.rights')}
             </div>
-            <div className="text-white/20 text-xs">
+            <div className="text-slate-300 text-xs">
               {t('footer.designedBy')} <a href="https://www.mutqun.com/" target="_blank" rel="noopener noreferrer" className="hover:text-safety-red transition-colors font-medium">MUTQUN Software</a>
             </div>
           </div>
-          <div className="flex gap-8 text-white/30 text-sm">
-            <a href="#" className="hover:text-white">{t('footer.privacy')}</a>
-            <a href="#" className="hover:text-white">{t('footer.terms')}</a>
+          <div className="flex gap-8 text-slate-400 text-sm">
+            <a href="#" className="hover:text-slate-900">{t('footer.privacy')}</a>
+            <a href="#" className="hover:text-slate-900">{t('footer.terms')}</a>
           </div>
         </div>
       </div>
@@ -551,17 +551,17 @@ const EntranceScreen: React.FC<EntranceProps> = ({ onEnter }) => {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, y: -100 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center gap-12"
+      className="fixed inset-0 z-[100] bg-[#f8f9fa] flex flex-col items-center justify-center gap-12"
     >
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-safety-red/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-security-blue/10 blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-safety-red/5 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-security-blue/5 blur-[120px]" />
         
         {/* Splash Mist Effect */}
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute left-1/2 top-1/2 w-64 h-64 rounded-full bg-white/5 blur-[60px]"
+            className="absolute left-1/2 top-1/2 w-64 h-64 rounded-full bg-black/5 blur-[60px]"
             initial={{ 
               x: "-50%", 
               y: "-50%", 
@@ -570,7 +570,7 @@ const EntranceScreen: React.FC<EntranceProps> = ({ onEnter }) => {
             }}
             animate={{ 
               scale: [1, 2, 1.5],
-              opacity: [0, 0.2, 0],
+              opacity: [0, 0.1, 0],
               x: ["-50%", `${-50 + (Math.random() * 40 - 20)}%`],
               y: ["-50%", `${-50 + (Math.random() * 40 - 20)}%`],
             }}
@@ -616,42 +616,21 @@ const EntranceScreen: React.FC<EntranceProps> = ({ onEnter }) => {
           />
           
           <img 
-            src="https://i.ibb.co/yBXnHVHC/l1j-removebg-preview.png" 
-            alt="Logo Part 1" 
-            className="h-40 md:h-64 object-contain relative z-10 filter drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+            src={contactInfo.logo} 
+            alt="Alwaalah Logo" 
+            className="h-40 md:h-64 object-contain relative z-10"
             referrerPolicy="no-referrer"
           />
         </motion.div>
 
-        <motion.div
-          animate={{ 
-            y: [0, -10, 0],
-          }}
-          transition={{ 
-            duration: 4, 
-            delay: 0.5,
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-          whileHover={{ scale: 1.05, filter: "brightness(1.2)" }}
-          whileTap={{ scale: 0.95 }}
-          className="cursor-pointer transition-all duration-300"
-          onClick={onEnter}
-        >
-          <img 
-            src="https://i.ibb.co/BH3ddRHX/l2.png" 
-            alt="Logo Part 2" 
-            className="h-16 md:h-24 object-contain"
-            referrerPolicy="no-referrer"
-          />
-        </motion.div>
+        {/* Removed redundant logo part 2 */}
 
         {/* Subtle loading indicator instead of button */}
         <motion.div 
           initial={{ width: 0 }}
           animate={{ width: "100px" }}
           transition={{ duration: 4, ease: "linear" }}
-          className="h-[1px] bg-white/20 mt-4"
+          className="h-[1px] bg-black/10 mt-4"
         />
       </div>
     </motion.div>
@@ -680,7 +659,7 @@ export default function App() {
   if (loading) return null;
 
   return (
-    <div className="font-sans antialiased bg-black min-h-screen">
+    <div className="font-sans antialiased bg-[#f8f9fa] min-h-screen">
       <AnimatePresence mode="wait">
         {!hasEntered && (
           <EntranceScreen key="entrance" onEnter={() => setHasEntered(true)} />

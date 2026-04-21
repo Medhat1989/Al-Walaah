@@ -66,6 +66,7 @@ const resources = {
         callUs: 'Call Us',
         emailUs: 'Email Us',
         visitUs: 'Visit Us',
+        address: 'Saudi Arabia: Riyadh, Dammam, Jeddah, Makkah, Medina, Tabuk, Jizan',
         form: {
           fullName: 'Full Name',
           email: 'Email Address',
@@ -111,7 +112,7 @@ const resources = {
           placeholders: {
             company: 'Your Organization',
             name: 'Full Name',
-            phone: '+966 50 000 0000',
+            phone: '+966 53 763 3390',
             email: 'name@company.com',
             location: 'City, District',
             details: 'Tell us more about your needs...'
@@ -243,6 +244,7 @@ const resources = {
         callUs: 'اتصل بنا',
         emailUs: 'راسلنا',
         visitUs: 'زرنا',
+        address: 'المملكة العربية السعودية الرياض الدمام جدة مكه المدينة تبوك جيزان',
         form: {
           fullName: 'الاسم الكامل',
           email: 'البريد الإلكتروني',
@@ -288,7 +290,7 @@ const resources = {
           placeholders: {
             company: 'منظمتك / شركتك',
             name: 'الاسم الكامل',
-            phone: '+966 50 000 0000',
+            phone: '+966 53 763 3390',
             email: 'name@company.com',
             location: 'المدينة، الحي',
             details: 'أخبرنا المزيد عن احتياجاتك...'

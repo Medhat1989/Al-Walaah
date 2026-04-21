@@ -47,8 +47,8 @@ export const services = [
 ];
 
 export const contactInfo = {
-  phone: '+966 123 456 789',
+  phone: '+966 53 763 3390',
   email: 'info@alwaalah.com',
-  address: 'Riyadh, Saudi Arabia',
-  logo: 'https://i.ibb.co/5W1nK0gs/alwalaah-logo-2-removebg-preview.png'
+  address: 'المملكة العربية السعودية الرياض الدمام جدة مكه المدينة تبوك جيزان',
+  logo: 'https://i.ibb.co/gMdvBHXb/Whats-App-Image-2026-04-21-at-11-22-56-PM-removebg-preview.png'
 };

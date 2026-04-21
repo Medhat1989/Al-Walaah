@@ -26,6 +26,20 @@ const AdminDashboard = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleFirestoreError = (error: any, operation: string, path: string) => {
+    const errInfo = {
+      error: error?.message || String(error),
+      authInfo: {
+        userId: auth.currentUser?.uid,
+        email: auth.currentUser?.email,
+        emailVerified: auth.currentUser?.emailVerified,
+      },
+      operation,
+      path
+    };
+    console.error('Firestore Error:', JSON.stringify(errInfo));
+  };
+
   const handleSave = async (data: any) => {
     try {
       if (currentQuotation?.id) {
@@ -39,7 +53,7 @@ const AdminDashboard = () => {
       setIsEditing(false);
       setCurrentQuotation(null);
     } catch (error) {
-      console.error("Error saving quotation:", error);
+      handleFirestoreError(error, currentQuotation?.id ? 'update' : 'create', 'quotations');
       alert(t('quotation.saveError'));
     }
   };
@@ -77,22 +91,22 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50" dir={isArabic ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-[#f8f9fa]" dir={isArabic ? 'rtl' : 'ltr'}>
       {/* Sidebar/Header */}
-      <nav className="bg-black text-white px-8 py-6 flex items-center justify-between sticky top-0 z-10">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-black/5 px-8 py-6 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 bg-safety-red rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-safety-red rounded-xl flex items-center justify-center text-white shadow-lg shadow-safety-red/20">
             <FileText size={24} />
           </div>
-          <h1 className="text-xl font-bold">{t('quotation.adminTitle')}</h1>
+          <h1 className="text-xl font-bold text-slate-900">{t('quotation.adminTitle')}</h1>
         </div>
         <div className="flex items-center gap-6">
-          <div className="text-sm text-white/50">
-            {t('quotation.loggedInAs')} <span className="text-white font-medium">{auth.currentUser?.email}</span>
+          <div className="text-sm text-slate-500">
+            {t('quotation.loggedInAs')} <span className="text-slate-900 font-medium">{auth.currentUser?.email}</span>
           </div>
           <button 
             onClick={() => logout()}
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-slate-400 hover:text-safety-red transition-colors font-medium text-sm"
           >
             <LogOut size={18} /> {t('quotation.logout')}
           </button>
