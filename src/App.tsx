@@ -287,17 +287,11 @@ const Hero = () => {
         >
           <div className="relative z-10 liquid-glass aspect-square rounded-[40px] overflow-hidden group">
             <img 
-              src="https://i.ibb.co/twzqh8q3/fireball.png" 
+              src="https://i.ibb.co/S7B1n201/fire.jpg" 
               alt="High Tech fire system" 
-              className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover opacity-90 group-hover:scale-110 transition-transform duration-700"
               referrerPolicy="no-referrer"
             />
-            <div className={`absolute top-8 ${i18n.language === 'ar' ? 'left-8 text-left' : 'right-8 text-right'}`}>
-              <div className="font-display text-xl font-bold tracking-tight text-slate-900 drop-shadow-sm">
-                {t('hero.highTech')} <br />
-                <span className="text-safety-red">{t('hero.fireSystem')}</span>
-              </div>
-            </div>
           </div>
 
           {/* Floating Elements */}
