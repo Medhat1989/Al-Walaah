@@ -14,9 +14,9 @@ const resources = {
         requestService: 'Request Service'
       },
       hero: {
-        title1: 'PROTECTING',
-        title2: 'WHAT MATTERS',
-        title3: 'MOST.',
+        title1: 'OVER 15 YEARS OF',
+        title2: 'DEDICATED',
+        title3: 'PROTECTION.',
         description: 'Alwaalah provides cutting-edge fire safety and security integration across Saudi Arabia. From Civil Defense permits to AI-driven surveillance, we secure your future.',
         requestService: 'Request Service',
         ourServices: 'Our Services',
@@ -192,9 +192,9 @@ const resources = {
         requestService: 'طلب خدمة'
       },
       hero: {
-        title1: 'نحمي',
-        title2: 'ما يهمك',
-        title3: 'أكثر.',
+        title1: 'خدمة تمتد',
+        title2: 'لأكثر من 15 عاما',
+        title3: 'فى حمايتكم',
         description: 'توفر الولاء أحدث حلول السلامة من الحرائق وتكامل الأنظمة الأمنية في جميع أنحاء المملكة العربية السعودية. من تصاريح الدفاع المدني إلى المراقبة المدعومة بالذكاء الاصطناعي، نحن نؤمن مستقبلك.',
         requestService: 'طلب خدمة',
         ourServices: 'خدماتنا',

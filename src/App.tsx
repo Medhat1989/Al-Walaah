@@ -241,7 +241,7 @@ const Hero = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="font-display text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter mb-8">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.1] tracking-tighter mb-8">
             {t('hero.title1')} <br />
             <span className="text-gradient-red">{t('hero.title2')}</span> <br />
             {t('hero.title3')}
