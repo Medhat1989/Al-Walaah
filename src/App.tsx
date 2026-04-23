@@ -536,98 +536,63 @@ const EntranceScreen: React.FC<EntranceProps> = ({ onEnter }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       onEnter();
-    }, 4000); // Auto-navigate after 4 seconds
+    }, 2500); // Display for 2.5 seconds total
     return () => clearTimeout(timer);
   }, [onEnter]);
 
   return (
-    <motion.div 
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0, y: -100 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[100] bg-[#f8f9fa] flex flex-col items-center justify-center gap-12"
-    >
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-safety-red/5 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-security-blue/5 blur-[120px]" />
-        
-        {/* Splash Mist Effect */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute left-1/2 top-1/2 w-64 h-64 rounded-full bg-black/5 blur-[60px]"
-            initial={{ 
-              x: "-50%", 
-              y: "-50%", 
-              scale: 0.5, 
-              opacity: 0 
-            }}
-            animate={{ 
-              scale: [1, 2, 1.5],
-              opacity: [0, 0.1, 0],
-              x: ["-50%", `${-50 + (Math.random() * 40 - 20)}%`],
-              y: ["-50%", `${-50 + (Math.random() * 40 - 20)}%`],
-            }}
-            transition={{ 
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              delay: i * 0.5,
-              ease: "easeInOut"
-            }}
-          />
-        ))}
-      </div>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
+      {/* Left Curtain Panel */}
+      <motion.div 
+        initial={{ x: 0 }}
+        exit={{ x: "-100%" }}
+        transition={{ duration: 1.2, ease: [0.85, 0, 0.15, 1], delay: 0.1 }}
+        className="absolute inset-y-0 left-0 w-1/2 bg-[#300101] z-50 border-r border-white/5 shadow-2xl"
+      />
+      {/* Right Curtain Panel */}
+      <motion.div 
+        initial={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 1.2, ease: [0.85, 0, 0.15, 1], delay: 0.1 }}
+        className="absolute inset-y-0 right-0 w-1/2 bg-[#300101] z-50 border-l border-white/5 shadow-2xl"
+      />
 
-      <div className="relative z-10 flex flex-col items-center gap-12">
+      <div className="relative z-[60] flex flex-col items-center">
         <motion.div
-          animate={{ 
-            y: [0, -15, 0],
-          }}
+          initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
           transition={{ 
-            duration: 5, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
+            duration: 1.5, 
+            ease: [0.22, 1, 0.36, 1]
           }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          className="cursor-pointer relative group"
-          onClick={onEnter}
+          className="flex flex-col items-center gap-12"
         >
-          {/* Light line around effect */}
-          <div className="absolute -inset-8 rounded-full border border-white/5 blur-sm" />
-          <motion.div 
-            className="absolute -inset-8 rounded-full border border-white/20"
-            animate={{ 
-              opacity: [0.1, 0.4, 0.1],
-              scale: [1, 1.05, 1],
-              rotate: [0, 180, 360]
-            }}
-            transition={{ 
-              opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-              scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 20, repeat: Infinity, ease: "linear" }
-            }}
-          />
-          
-          <img 
-            src={contactInfo.logo} 
-            alt="Alwaalah Logo" 
-            className="h-40 md:h-64 object-contain relative z-10"
-            referrerPolicy="no-referrer"
-          />
+          <div className="relative">
+            <motion.div 
+              className="absolute -inset-24 rounded-full bg-white/5 blur-[120px]"
+              animate={{ opacity: [0.1, 0.3, 0.1], scale: [1, 1.4, 1] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <img 
+              src={contactInfo.logo} 
+              alt="Alwaalah Logo" 
+              className="h-40 md:h-56 object-contain relative z-10 brightness-[1.1] contrast-[1.1]"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+
+          <div className="w-32 h-[1.5px] bg-white/10 relative overflow-hidden rounded-full">
+            <motion.div 
+              initial={{ x: "-100%" }}
+              animate={{ x: "0%" }}
+              transition={{ duration: 2.5, ease: "easeInOut" }}
+              className="absolute inset-0 bg-white/60"
+            />
+          </div>
         </motion.div>
-
-        {/* Removed redundant logo part 2 */}
-
-        {/* Subtle loading indicator instead of button */}
-        <motion.div 
-          initial={{ width: 0 }}
-          animate={{ width: "100px" }}
-          transition={{ duration: 4, ease: "linear" }}
-          className="h-[1px] bg-black/10 mt-4"
-        />
       </div>
-    </motion.div>
+    </div>
   );
 };
 
